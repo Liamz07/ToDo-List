@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> ✏️ To-Do List App </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="app-notification" class="app-notification" role="status" aria-live="polite" hidden></div>
+        <header>
+            <h1> ✏️ To-Do List App </h1>
+            <p> Organize your tasks, simplify your day. </p>
+            <button type="button" id="theme-toggle" aria-pressed="false">☀ Light mode</button>
+        </header>
+        <main>
+            <section class="add-task-section">
+                <h2> Add a Task </h2>
+                <form id="task-form" class="task-form">
+                    <div class="field task-name-field">
+                        <label for="task">Task</label>
+                        <input id="task" name="task" type="text" placeholder="Enter your task..." required autocomplete="off">
+                    </div>
+                    <div class="field">
+                        <label for="priority">Priority</label>
+                        <select id="priority" name="priority">
+                            <option value="high">High</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="due-date">Due date &amp; time <span class="optional">(optional)</span></label>
+                        <input id="due-date" name="due-date" type="datetime-local" step="60">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" id="addtask">Add Task</button>
+                        <button type="button" id="cancel-edit" class="button-secondary" hidden>Cancel</button>
+                    </div>
+                    <p id="form-message" class="form-message" role="status" aria-live="polite" hidden></p>
+                </form>
+            </section>
+            <section class="search-filter-section">
+                <h2> Search & Filter </h2>
+                <label for="search">Search:</label>
+                <input id="search" type="search" placeholder="Search by task name..." autocomplete="off">
+                <label for="filter">Filter:</label>
+                <select id="filter">
+                    <option value="all">All</option>
+                    <option value="active">Active</option>
+                    <option value="completed">Completed</option>
+                    <option value="expired">Expired</option>
+                    <option value="high">High priority</option>
+                    <option value="medium">Medium priority</option>
+                    <option value="low">Low priority</option>
+                    <option value="due-today">Due today</option>
+                    <option value="no-due-date">No due date</option>
+                </select>
+                <label for="sort">Sort:</label>
+                <select id="sort">
+                    <option value="due-date">Due date</option>
+                    <option value="priority">Priority</option>
+                    <option value="newest">Newest first</option>
+                </select>
+            </section>
+            <section class="task-list-section">
+                <div class="section-heading">
+                    <h2> Your Tasks </h2>
+                    <div class="section-actions">
+                        <span class="result-count" aria-live="polite">0 results</span>
+                        <button type="button" id="clear-completed" class="button-secondary">Clear completed</button>
+                    </div>
+                </div>
+                <ul id="task-list" aria-live="polite">
+                    <li class="empty-state">No tasks found. Add a task to get started.</li>
+                </ul>
+            </section>
+            <section class="statistics-section">
+                <h2> Statistics </h2>
+                <div class="statistics-grid">
+                    <span class="stat-card"><strong>Total</strong><b id="total-count">0</b></span>
+                    <span class="stat-card"><strong>Active</strong><b id="active-count">0</b></span>
+                    <span class="stat-card"><strong>Completed</strong><b id="completed-count">0</b></span>
+                    <span class="stat-card"><strong>Expired</strong><b id="expired-count">0</b></span>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>© 2026 To-Do List App</p>
+            <p>Built with HTML, CSS & JavaScript</p>
+        </footer>
+        <script type="module" src="script.js"></script>
+    </body>
+</html>
