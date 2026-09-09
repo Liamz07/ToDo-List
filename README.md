@@ -70,16 +70,6 @@ Backend
    ↓
 Database
 
-## 📸 Screenshots
-
-### Desktop
-
-![Desktop](./images/desktop.png)
-
-### Mobile
-
-![Mobile](./images/mobile.png)
-
 ## 🎯 Learning Objectives
 
 This project was created to practice:
