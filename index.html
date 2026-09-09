@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Khai báo ngôn ngữ chính của trang web là tiếng Việt -->
 <html lang="vi">
     <head>
         <!-- Khai báo bảng mã ký tự là UTF-8 để hiển thị đúng tiếng Việt và các ký tự đặc biệt -->
@@ -7,18 +8,27 @@
         <title> ✏️ To-Do List App </title>
         <!-- Giúp giao diện hiển thị tối ưu trên màn hình thiết bị di động -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Nhúng file CSS 외부 để định dạng giao diện -->
+        <!-- Nhúng file CSS để định dạng giao diện -->
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <!-- Thẻ thông báo toàn ứng dụng (ẩn mặc định, JavaScript sẽ bật khi có thông báo) -->
+        <!-- 
+        Thẻ thông báo toàn ứng dụng (ẩn mặc định, JavaScript sẽ bật khi có thông báo)
+        role="status": Khai báo đây là khu vực hiển thị thông báo trạng thái cho trình đọc màn hình (Screen Reader).
+        aria-live="polite": Nhắc trình đọc màn hình tự động đọc thông báo khi nội dung thay đổi, nhưng sẽ chờ người dùng thao tác xong rồi mới đọc (không ngắt lời).
+        -->
         <div id="app-notification" class="app-notification" role="status" aria-live="polite" hidden></div>
 
         <!-- ================= HEADER: Đầu trang ================= -->
         <header>
             <h1> ✏️ To-Do List App </h1>
             <p> Organize your tasks, simplify your day. </p>
-            <!-- Nút chuyển đổi chế độ Sáng/Tối (Light/Dark Mode) -->
+            <!-- 
+            Nút chuyển đổi chế độ Sáng/Tối (Light/Dark Mode)
+            - aria-pressed="false": Khai báo trạng thái Bật/Tắt (Toggle) của nút bấm cho trình đọc màn hình.
+            + false: Nút đang ở trạng thái chưa được nhấn (chế độ Tối).
+            + true: Nút đang ở trạng thái đã nhấn (chế độ Sáng).
+            -->
             <button type="button" id="theme-toggle" aria-pressed="false">☀ Light mode</button>
         </header>
 
@@ -31,6 +41,10 @@
                     <!-- Ô nhập tên công việc -->
                     <div class="field task-name-field">
                         <label for="task">Task</label>
+                    <!-- 
+                    required: Bắt buộc người dùng phải nhập nội dung trước khi gửi (submit) form, trình duyệt sẽ tự báo lỗi nếu để trống.
+                    autocomplete="off": Tắt tính năng tự động gợi ý/điền lịch sử nhập liệu cũ của trình duyệt cho ô input này, đồng thời bắt buộc nhập vào.
+                    -->
                         <input id="task" name="task" type="text" placeholder="Enter your task..." required autocomplete="off">
                     </div>
 
@@ -39,6 +53,7 @@
                         <label for="priority">Priority</label>
                         <select id="priority" name="priority">
                             <option value="high">High</option>
+                            <!-- selected: Đánh dấu đây là tùy chọn (option) được chọn mặc định khi trang web hoặc form vừa tải xong -->
                             <option value="medium" selected>Medium</option>
                             <option value="low">Low</option>
                         </select>
@@ -46,7 +61,21 @@
 
                     <!-- Chọn ngày & giờ hạn chót (Không bắt buộc) -->
                     <div class="field">
-                        <label for="due-date">Due date &amp; time <span class="optional">(optional)</span></label>
+                        <!-- Thẻ label liên kết với ô nhập liệu có id="due-date" -->
+                        <label for="due-date">
+                            <!-- Văn bản chính của nhãn -->
+                            Due date 
+                            <!-- &amp; là mã HTML đại diện cho ký tự "&" -->
+                            &amp; 
+                            <!-- Chữ "time" đi liền sau dấu "&" -> Tạo thành "Due date & time" -->
+                            time 
+                            <!-- Thẻ span dùng để nhóm chữ "(optional)" lại giúp dễ chỉnh CSS riêng (mờ hơn, nhỏ hơn) -->
+                            <span class="optional">(optional)</span>
+                        </label>
+                        <!-- 
+                        type="datetime-local": Cho phép người dùng chọn cả Ngày và Giờ (giờ, phút) theo múi giờ địa phương thông qua giao diện lịch/đồng hồ của trình duyệt.
+                        step="60": Đặt bước nhảy thời gian là 60 giây (tương đương 1 phút), giúp ẩn/bỏ qua phần chọn Giây trong bộ chọn thời gian để giao diện gọn hơn.
+                        -->
                         <input id="due-date" name="due-date" type="datetime-local" step="60">
                     </div>
 
@@ -68,11 +97,13 @@
                 
                 <!-- Ô tìm kiếm theo tên -->
                 <label for="search">Search:</label>
+                <!-- autocomplete="off": Tắt lịch sử gợi ý tìm kiếm của trình duyệt, giúp bảng gõ từ khóa gọn gàng và tránh che mất kết quả tìm kiếm real-time, không bắt buộc nhập-->
                 <input id="search" type="search" placeholder="Search by task name..." autocomplete="off">
 
                 <!-- Bộ lọc theo trạng thái, mức ưu tiên, hạn chót -->
                 <label for="filter">Filter:</label>
                 <select id="filter">
+                <!-- Bộ lọc danh sách task: Thuộc tính 'value' lưu giá trị định danh ngắn gọn để JavaScript đọc và thực hiện logic lọc -->
                     <option value="all">All</option>
                     <option value="active">Active</option>
                     <option value="completed">Completed</option>
@@ -116,10 +147,22 @@
             <section class="statistics-section">
                 <h2> Statistics </h2>
                 <div class="statistics-grid">
-                    <span class="stat-card"><strong>Total</strong><b id="total-count">0</b></span>
-                    <span class="stat-card"><strong>Active</strong><b id="active-count">0</b></span>
-                    <span class="stat-card"><strong>Completed</strong><b id="completed-count">0</b></span>
-                    <span class="stat-card"><strong>Expired</strong><b id="expired-count">0</b></span>
+                    <span class="stat-card">
+                        <strong>Total</strong>
+                        <b id="total-count">0</b>
+                    </span>
+                    <span class="stat-card">
+                        <strong>Active</strong>
+                        <b id="active-count">0</b>
+                    </span>
+                    <span class="stat-card">
+                        <strong>Completed</strong>
+                        <b id="completed-count">0</b>
+                    </span>
+                    <span class="stat-card">
+                        <strong>Expired</strong>
+                        <b id="expired-count">0</b>
+                    </span>
                 </div>
             </section>
         </main>
@@ -128,6 +171,7 @@
         <footer>
             <p>© 2026 To-Do List App</p>
             <p>Built with HTML, CSS & JavaScript</p>
+            <p>Version 1.0</p>
         </footer>
 
         <!-- Nhúng file JavaScript theo dạng ES Module để xử lý logic ứng dụng -->

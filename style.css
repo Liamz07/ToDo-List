@@ -2,57 +2,92 @@
    DESIGN TOKENS (Khai báo các biến CSS dùng chung)
 ========================================================= */
 
+/* "--": Khai báo một biến CSS */
+
+/* Khai báo toàn cục, mục đích áp dụng cho tất cả*/
 :root {
-    /* Khai báo hệ màu mặc định là Dark Mode cho trình duyệt */
+    /* 
+    color-scheme: Khai báo cho trình duyệt biết trang web hỗ trợ theme Sáng/Tối (hiện tại mặc định là Tối).
+    Giúp các thành phần mặc định (thanh cuộn, ô input, bộ chọn lịch) tự động đổi màu đồng bộ.
+    */
     color-scheme: dark;
 
     /* Mã màu nền chính, nền các thẻ (surface) */
+    /* --bg (Background): Màu nền chủ đạo cho toàn bộ trang web (thường đặt ở thẻ body) */
     --bg: #080808;
+    /* --surface: Màu nền cho các khung thẻ (Card), ô chứa nội dung chính (Bento Grid box, Form wrapper) */
     --surface: #151515;
+    /* --surface-2: Màu nền cấp 2 cho các thành phần con nằm bên trong surface (như ô Input, thẻ Filter, Badge) */
     --surface-2: #1b1b1b;
+    /* --surface-hover: Màu nền thay đổi khi người dùng rê chuột (hover) vào nút bấm hoặc các khung tương tác */
     --surface-hover: #222222;
 
     /* Mã màu đường viền */
+    /* --border: Màu viền tĩnh mặc định dùng để phân chia các khối giao diện, ô input, hoặc khung chứa (Card) */
     --border: #303030;
+    /* --border-hover: Màu viền sáng hơn khi rê chuột (hover) hoặc focus vào ô input, nút bấm để tạo hiệu ứng tương tác */
     --border-hover: #454545;
 
     /* Mã màu chữ chính và màu chữ phụ (muted) */
+    /* --text: Màu chữ chính (trắng đục/sáng), dùng cho tiêu đề, nội dung task và các văn bản quan trọng cần độ tương phản cao */
     --text: #f5f5f5;
+    /* --muted: Màu chữ phụ/mờ (xám trung tính), dùng cho gợi ý (placeholder), ngày tháng, chữ (optional) hoặc thông tin phụ */
     --muted: #999999;
 
     /* Màu chủ đạo (Accent color - Tím) */
+    /* --accent: Màu nhấn chủ đạo (Tím), dùng cho các nút bấm chính (CTA), icon nổi bật, trạng thái được chọn hoặc viền khi active */
     --accent: #8b5cf6;
+    /* --accent-hover: Tông màu nhấn sáng hơn, dùng làm hiệu ứng khi người dùng rê chuột (hover) hoặc bấm vào nút chính */
     --accent-hover: #a78bfa;
+    /* --accent-soft: Tông màu nhấn trầm/nhẹ, dùng làm màu nền phụ cho nhãn (badge), thẻ active, hoặc hiệu ứng highlight dịu mắt */
     --accent-soft: #211744;
 
     /* Màu viền khi focus và màu nền ô input */
+    /* --focus: Màu viền sáng (Tím nhạt) nổi bật khi người dùng nhấp hoặc dùng phím Tab di chuyển vào ô input/nút bấm */
     --focus: #c4b5fd;
+    /* --input-bg: Màu nền riêng biệt (Đen tuyền) cho các ô nhập liệu, giúp ô input chìm xuống và tách biệt khỏi thẻ chứa */
     --input-bg: #0d0d0d;
 
+
     /* Màu trạng thái: Báo lỗi/Nguy hiểm, Thành công, Cảnh báo */
-    --danger: #ef4444;
+    /* --danger: Màu đỏ biểu thị lỗi, hành động xóa, cảnh báo task đã quá hạn (Expired) hoặc ô input bị thiếu dữ liệu */
+    -danger: #ef4444;
+    /* --success: Màu xanh lá biểu thị trạng thái thành công, task đã hoàn thành (Completed) hoặc thao tác lưu thành công */
     --success: #22c55e;
+    /* --warning: Màu vàng biểu thị cảnh báo, task sắp hết hạn, độ ưu tiên Trung bình hoặc thông báo cần chú ý */
     --warning: #eab308;
 
+
     /* Bo tròn góc (Nhỏ, Vừa, Lớn) */
+    /* --radius-sm: Độ bo góc nhỏ (10px), dùng cho các phần tử kích thước gọn như nút bấm nhỏ, nhãn nhãn badge, ô input */
     --radius-sm: 10px;
+    /* --radius-md: Độ bo góc vừa (16px), dùng cho khung chứa thẻ task, form nhập liệu, ô tìm kiếm */
     --radius-md: 16px;
+    /* --radius-lg: Độ bo góc lớn (22px), dùng cho các ô thẻ Bento Grid lớn, modal popup hoặc khung tổng thể ứng dụng */
     --radius-lg: 22px;
 
-    /* Hiệu ứng đổ bóng chuẩn và khi hover */
-    --shadow:
-        0 10px 30px rgb(0 0 0 / 20%);
 
+    /* Hiệu ứng đổ bóng chuẩn và khi hover */
+    /* --shadow: Đổ bóng tĩnh phía dưới phần tử (độ lệch Y 10px, mờ 30px, độ trong suốt 20%), tạo chiều sâu nhẹ ở trạng thái bình thường */
+    --shadow: 0 10px 30px rgb(0 0 0 / 20%);
+    /* --shadow-hover: Đổ bóng đậm và rộng hơn (độ lệch Y 18px, mờ 45px, độ trong suốt 30%), tạo cảm giác thẻ "nổi lên" khi rê chuột */
     --shadow-hover:
-        0 18px 45px rgb(0 0 0 / 30%);
+    0 18px 45px rgb(0 0 0 / 30%);
+
 
     /* Khai báo chuyển động mượt (Transition) dùng chung */
+    /* --transition: Tập hợp các thuộc tính chuyển động mượt trong 0.25 giây với gia tốc ease */
     --transition:
-        background-color 0.25s ease,
-        border-color 0.25s ease,
-        color 0.25s ease,
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+    /* background-color: Chuyển đổi mượt mà màu nền khi thay đổi theme hoặc khi hover nút bấm */
+    background-color 0.25s ease,
+    /* border-color: Chuyển đổi mượt màu viền khi focus vào ô input hoặc rê chuột qua thẻ */
+    border-color 0.25s ease,
+    /* color: Chuyển đổi mượt màu chữ khi tương tác */
+    color 0.25s ease,
+    /* transform: Chuyển đổi mượt khi phóng to, nhích vị trí hoặc thu nhỏ phần tử */
+    transform 0.25s ease,
+    /* box-shadow: Chuyển đổi mượt độ đậm nhạt của bóng đổ khi rê chuột */
+    box-shadow 0.25s ease;
 }
 
 
@@ -95,10 +130,27 @@ body.light-theme {
    RESET (Cấu hình mặc định cho các phần tử)
 ========================================================= */
 
+/* 
+  Selector '*': Áp dụng cho TẤT CẢ phần tử HTML trên trang web.
+  
+  box-sizing: border-box; 
+  - Thay đổi cách trình duyệt tính kích thước (width/height) của các phần tử.
+  - Ép kích thước hiển thị bao gồm cả phần khoảng đệm (padding) và viền (border).
+  - Tác dụng: Giúp giữ nguyên độ rộng chuẩn khi chia cột layout (như Bento Grid) hoặc 
+    đặt width: 100% cho ô Input mà không lo bị phình to làm vỡ khung giao diện.
+*/
 * {
     /* Tính kích thước phần tử bao gồm cả border và padding */
     box-sizing: border-box;
 }
+
+/*
+scroll-behavior: smooth;
+  - Bật hiệu ứng cuộn mượt (Smooth Scrolling) trên toàn trang.
+  - Tác dụng: Khi nhấp vào các liên kết nội bộ (anchor link như <a href="#section-id">), 
+    hoặc khi dùng JavaScript chuyển vị trí trang (element.scrollIntoView()), 
+    màn hình sẽ trượt mượt mà đến vị trí đó thay vì giật/nhảy cảnh lập tức.
+*/
 
 html {
     /* Cuộn trang mượt mà khi nhấp vào liên kết nội bộ */
@@ -113,12 +165,26 @@ body {
 
     /* Tạo dải màu chuyển tiếp (Gradient) ánh tím nhẹ ở góc trên bên trái trên nền --bg */
     background:
-        radial-gradient(
-            circle at top left,
-            rgb(139 92 246 / 8%),
-            transparent 30%
-        ),
-        var(--bg);
+    /* Hàm tạo màu chuyển sắc dạng hình tròn/hình elip tỏa ra từ một điểm */
+    radial-gradient(
+        /* 1. Hình dạng & Vị trí tâm vệt sáng:
+           - circle: Ép vệt sáng có dạng hình tròn hoàn hảo (thay vì hình elip).
+           - at top left: Đặt tâm của vòng tròn ở góc trên cùng bên trái của khung hình. */
+        circle at top left,
+
+        /* 2. Màu ở TÂM vệt sáng:
+           - rgb(139 92 246 / 8%): Màu tím nhấn (mã RGB tương ứng với --accent #8b5cf6)
+             kèm độ trong suốt (opacity) cực mỏng 8% để tạo vệt hắt sáng mờ dịu mắt. */
+        rgb(139 92 246 / 8%),
+
+        /* 3. Màu ở RANH GIỚI BÊN NGOÀI & BÁN KÍNH:
+           - transparent 30%: Mờ dần hoàn toàn thành màu trong suốt khi đạt đến bán kính 30%
+             kích thước của trang web (giúp vệt sáng hòa tan vào nền --bg không bị vệt cắt). */
+        transparent 30%
+    ),
+    
+    /* Màu nền chính bên dưới vệt sáng (màu đen tối --bg) */
+    var(--bg);
 
     /* Màu chữ chính */
     color: var(--text);
@@ -153,13 +219,14 @@ p {
 
 h1 {
     /* Khoảng cách lề dưới */
+    /* 0.15rem = 0.15 x cỡ chữ ở thẻ <html> (thường mặc định 16px) = 2.4px */
     margin-bottom: 0.15rem;
 
     /* Cỡ chữ linh hoạt theo độ rộng màn hình (Tối thiểu 1.8rem, Tối đa 2.5rem) */
     font-size:
         clamp(1.8rem, 4vw, 2.5rem);
 
-    /* Thu hẹp khoảng cách giữa các cái chữ */
+    /* Thu hẹp khoảng cách giữa các chữ lại 4% so với cỡ chữ HIỆN TẠI của chính nó */
     letter-spacing: -0.04em;
 }
 
