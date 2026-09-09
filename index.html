@@ -1,26 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
     <head>
+        <!-- Khai báo bảng mã ký tự là UTF-8 để hiển thị đúng tiếng Việt và các ký tự đặc biệt -->
         <meta charset="utf-8">
+        <!-- Tiêu đề hiển thị trên thẻ trình duyệt -->
         <title> ✏️ To-Do List App </title>
+        <!-- Giúp giao diện hiển thị tối ưu trên màn hình thiết bị di động -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Nhúng file CSS 외부 để định dạng giao diện -->
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <!-- Thẻ thông báo toàn ứng dụng (ẩn mặc định, JavaScript sẽ bật khi có thông báo) -->
         <div id="app-notification" class="app-notification" role="status" aria-live="polite" hidden></div>
+
+        <!-- ================= HEADER: Đầu trang ================= -->
         <header>
             <h1> ✏️ To-Do List App </h1>
             <p> Organize your tasks, simplify your day. </p>
+            <!-- Nút chuyển đổi chế độ Sáng/Tối (Light/Dark Mode) -->
             <button type="button" id="theme-toggle" aria-pressed="false">☀ Light mode</button>
         </header>
+
+        <!-- ================= MAIN: Nội dung chính ================= -->
         <main>
+            <!-- SECTION 1: Form thêm / sửa công việc -->
             <section class="add-task-section">
                 <h2> Add a Task </h2>
                 <form id="task-form" class="task-form">
+                    <!-- Ô nhập tên công việc -->
                     <div class="field task-name-field">
                         <label for="task">Task</label>
                         <input id="task" name="task" type="text" placeholder="Enter your task..." required autocomplete="off">
                     </div>
+
+                    <!-- Chọn độ ưu tiên (High / Medium / Low) -->
                     <div class="field">
                         <label for="priority">Priority</label>
                         <select id="priority" name="priority">
@@ -29,21 +43,34 @@
                             <option value="low">Low</option>
                         </select>
                     </div>
+
+                    <!-- Chọn ngày & giờ hạn chót (Không bắt buộc) -->
                     <div class="field">
                         <label for="due-date">Due date &amp; time <span class="optional">(optional)</span></label>
                         <input id="due-date" name="due-date" type="datetime-local" step="60">
                     </div>
+
+                    <!-- Nút hành động: Thêm mới hoặc Hủy sửa -->
                     <div class="form-actions">
                         <button type="submit" id="addtask">Add Task</button>
+                        <!-- Nút "Cancel" ẩn mặc định, chỉ hiện khi đang ở chế độ Chỉnh sửa công việc -->
                         <button type="button" id="cancel-edit" class="button-secondary" hidden>Cancel</button>
                     </div>
+
+                    <!-- Đoạn văn hiển thị lỗi/thông báo của form (ẩn mặc định) -->
                     <p id="form-message" class="form-message" role="status" aria-live="polite" hidden></p>
                 </form>
             </section>
+
+            <!-- SECTION 2: Tìm kiếm, Thẻ lọc và Sắp xếp -->
             <section class="search-filter-section">
                 <h2> Search & Filter </h2>
+                
+                <!-- Ô tìm kiếm theo tên -->
                 <label for="search">Search:</label>
                 <input id="search" type="search" placeholder="Search by task name..." autocomplete="off">
+
+                <!-- Bộ lọc theo trạng thái, mức ưu tiên, hạn chót -->
                 <label for="filter">Filter:</label>
                 <select id="filter">
                     <option value="all">All</option>
@@ -56,6 +83,8 @@
                     <option value="due-today">Due today</option>
                     <option value="no-due-date">No due date</option>
                 </select>
+
+                <!-- Bộ sắp xếp (Theo ngày, mức ưu tiên, mới nhất) -->
                 <label for="sort">Sort:</label>
                 <select id="sort">
                     <option value="due-date">Due date</option>
@@ -63,18 +92,27 @@
                     <option value="newest">Newest first</option>
                 </select>
             </section>
+
+            <!-- SECTION 3: Danh sách công việc -->
             <section class="task-list-section">
                 <div class="section-heading">
                     <h2> Your Tasks </h2>
                     <div class="section-actions">
+                        <!-- Đếm số lượng kết quả đang hiển thị -->
                         <span class="result-count" aria-live="polite">0 results</span>
+                        <!-- Nút dọn dẹp các công việc đã hoàn thành -->
                         <button type="button" id="clear-completed" class="button-secondary">Clear completed</button>
                     </div>
                 </div>
+
+                <!-- Thẻ ul chứa danh sách thẻ <li> do JavaScript tự động render -->
                 <ul id="task-list" aria-live="polite">
+                    <!-- Trạng thái trống mặc định khi chưa có task -->
                     <li class="empty-state">No tasks found. Add a task to get started.</li>
                 </ul>
             </section>
+
+            <!-- SECTION 4: Thống kê tổng quan -->
             <section class="statistics-section">
                 <h2> Statistics </h2>
                 <div class="statistics-grid">
@@ -85,10 +123,14 @@
                 </div>
             </section>
         </main>
+
+        <!-- ================= FOOTER: Chân trang ================= -->
         <footer>
             <p>© 2026 To-Do List App</p>
             <p>Built with HTML, CSS & JavaScript</p>
         </footer>
+
+        <!-- Nhúng file JavaScript theo dạng ES Module để xử lý logic ứng dụng -->
         <script type="module" src="script.js"></script>
     </body>
 </html>
