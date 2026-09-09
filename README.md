@@ -4,11 +4,11 @@ A simple To-Do List web application built with HTML, CSS and JavaScript.
 
 ## 🌐 Demo
 
-[Live Demo](https://...)
+[Live Demo](https://todo-list-tau-navy-70.vercel.app/)
 
 ## 📸 Preview
 
-![To-Do List Preview](./images/preview.png)
+![To-Do List Preview](image.png)
 
 ## ✨ Features
 
@@ -102,9 +102,9 @@ This project was created to practice:
 
 ## 👤 Author
 
-**Nguyen Van A**
+**Minh Nguyen**
 
-- GitHub: [@username](https://github.com/username)
+- GitHub: [@Liamz07](https://github.com/Liamz07)
 
 # Project Name
 
