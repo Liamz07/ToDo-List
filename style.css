@@ -1,42 +1,52 @@
 /* =========================================================
-   DESIGN TOKENS
+   DESIGN TOKENS (Khai báo các biến CSS dùng chung)
 ========================================================= */
 
 :root {
+    /* Khai báo hệ màu mặc định là Dark Mode cho trình duyệt */
     color-scheme: dark;
 
+    /* Mã màu nền chính, nền các thẻ (surface) */
     --bg: #080808;
     --surface: #151515;
     --surface-2: #1b1b1b;
     --surface-hover: #222222;
 
+    /* Mã màu đường viền */
     --border: #303030;
     --border-hover: #454545;
 
+    /* Mã màu chữ chính và màu chữ phụ (muted) */
     --text: #f5f5f5;
     --muted: #999999;
 
+    /* Màu chủ đạo (Accent color - Tím) */
     --accent: #8b5cf6;
     --accent-hover: #a78bfa;
     --accent-soft: #211744;
 
+    /* Màu viền khi focus và màu nền ô input */
     --focus: #c4b5fd;
     --input-bg: #0d0d0d;
 
+    /* Màu trạng thái: Báo lỗi/Nguy hiểm, Thành công, Cảnh báo */
     --danger: #ef4444;
     --success: #22c55e;
     --warning: #eab308;
 
+    /* Bo tròn góc (Nhỏ, Vừa, Lớn) */
     --radius-sm: 10px;
     --radius-md: 16px;
     --radius-lg: 22px;
 
+    /* Hiệu ứng đổ bóng chuẩn và khi hover */
     --shadow:
         0 10px 30px rgb(0 0 0 / 20%);
 
     --shadow-hover:
         0 18px 45px rgb(0 0 0 / 30%);
 
+    /* Khai báo chuyển động mượt (Transition) dùng chung */
     --transition:
         background-color 0.25s ease,
         border-color 0.25s ease,
@@ -47,12 +57,14 @@
 
 
 /* =========================================================
-   LIGHT THEME
+   LIGHT THEME (Ghi đè giá trị biến cho giao diện sáng)
 ========================================================= */
 
 body.light-theme {
+    /* Chuyển cấu hình trình duyệt sang Light Mode */
     color-scheme: light;
 
+    /* Đổi lại giá trị các biến màu phù hợp với nền sáng */
     --bg: #f1f2f6;
     --surface: #ffffff;
     --surface-2: #f8f8fb;
@@ -80,21 +92,26 @@ body.light-theme {
 
 
 /* =========================================================
-   RESET
+   RESET (Cấu hình mặc định cho các phần tử)
 ========================================================= */
 
 * {
+    /* Tính kích thước phần tử bao gồm cả border và padding */
     box-sizing: border-box;
 }
 
 html {
+    /* Cuộn trang mượt mà khi nhấp vào liên kết nội bộ */
     scroll-behavior: smooth;
 }
 
 body {
+    /* Chiều cao tối thiểu bằng 100% chiều cao màn hình */
     min-height: 100vh;
+    /* Xóa khoảng cách lề ngoài mặc định */
     margin: 0;
 
+    /* Tạo dải màu chuyển tiếp (Gradient) ánh tím nhẹ ở góc trên bên trái trên nền --bg */
     background:
         radial-gradient(
             circle at top left,
@@ -103,16 +120,20 @@ body {
         ),
         var(--bg);
 
+    /* Màu chữ chính */
     color: var(--text);
 
+    /* Phông chữ hiển thị */
     font-family:
         Inter,
         Arial,
         Helvetica,
         sans-serif;
 
+    /* Khoảng cách giữa các dòng chữ */
     line-height: 1.5;
 
+    /* Hiệu ứng chuyển đổi màu mượt khi đổi Theme */
     transition:
         background-color 0.25s ease,
         color 0.25s ease;
@@ -120,151 +141,192 @@ body {
 
 
 /* =========================================================
-   GLOBAL TYPOGRAPHY
+   GLOBAL TYPOGRAPHY (Định dạng văn bản chung)
 ========================================================= */
 
 h1,
 h2,
 p {
+    /* Xóa khoảng cách lề trên mặc định */
     margin-top: 0;
 }
 
 h1 {
+    /* Khoảng cách lề dưới */
     margin-bottom: 0.15rem;
 
+    /* Cỡ chữ linh hoạt theo độ rộng màn hình (Tối thiểu 1.8rem, Tối đa 2.5rem) */
     font-size:
         clamp(1.8rem, 4vw, 2.5rem);
 
+    /* Thu hẹp khoảng cách giữa các cái chữ */
     letter-spacing: -0.04em;
 }
 
 h2 {
+    /* Khoảng cách lề dưới */
     margin-bottom: 1rem;
 
+    /* Cỡ chữ */
     font-size: 1.1rem;
+    /* Thu hẹp khoảng cách chữ */
     letter-spacing: -0.02em;
 }
 
 p {
+    /* Màu chữ phụ cho các đoạn văn */
     color: var(--muted);
 }
 
 
 /* =========================================================
-   HEADER
+   HEADER (Phần đầu trang)
 ========================================================= */
 
 header {
+    /* Bố cục dạng Lưới (Grid) */
     display: grid;
 
+    /* Cột 1 chiếm hết không gian còn lại (1fr), Cột 2 tự điều chỉnh theo nội dung (auto) */
     grid-template-columns:
         1fr auto;
 
+    /* 2 hàng tự điều chỉnh chiều cao theo nội dung */
     grid-template-rows:
         auto auto;
 
+    /* Căn dọc các phần tử vào giữa */
     align-items: center;
 
+    /* Khoảng cách giữa các hàng là 0.1rem, các cột là 2rem */
     gap: 0.1rem 2rem;
 
+    /* Độ rộng tối đa là 1180px, tối thiểu là chiều rộng màn hình trừ đi 3rem */
     width:
         min(
             calc(100% - 3rem),
             1180px
         );
 
+    /* Căn giữa header ra giữa màn hình */
     margin: 0 auto;
 
+    /* Khoảng cách đệm bên trong: Trên 2.5rem, Trái/Phải 0, Dưới 1.5rem */
     padding:
         2.5rem 0 1.5rem;
 }
 
 header h1,
 header p {
+    /* Định vị h1 và p nằm ở Cột 1 */
     grid-column: 1;
 }
 
 header h1 {
+    /* h1 nằm ở Hàng 1 */
     grid-row: 1;
 }
 
 header p {
+    /* p nằm ở Hàng 2 */
     grid-row: 2;
 
+    /* Xóa khoảng cách lề dưới */
     margin-bottom: 0;
 }
 
 header > button {
+    /* Nút đổi theme nằm ở Cột 2 */
     grid-column: 2;
+    /* Trải dài từ Hàng 1 và gộp 2 hàng lại */
     grid-row: 1 / span 2;
 
+    /* Chiều rộng tối thiểu cho nút */
     min-width: 9rem;
 }
 
 
 /* =========================================================
-   THEME BUTTON
+   THEME BUTTON (Nút đổi giao diện Sáng/Tối)
 ========================================================= */
 
 header > button {
+    /* Đường viền 1px */
     border: 1px solid var(--border);
 
+    /* Màu nền nút */
     background: var(--surface);
 
+    /* Màu chữ */
     color: var(--text);
 
+    /* Đổ bóng */
     box-shadow: var(--shadow);
 
+    /* Bo tròn tối đa dạng hình viên thuốc (Pill shape) */
     border-radius: 999px;
 }
 
 header > button:hover {
+    /* Màu nền khi di chuột vào */
     background: var(--surface-hover);
 
+    /* Đổi màu viền sang màu chủ đạo */
     border-color:
         var(--accent);
 
+    /* Nhích nút lên trên 2px tạo hiệu ứng nổi */
     transform:
         translateY(-2px);
 }
 
 
 /* =========================================================
-   MAIN BENTO GRID
+   MAIN BENTO GRID (Bố cục Bento Grid của nội dung chính)
 ========================================================= */
 
 main {
+    /* Sử dụng bố cục Lưới */
     display: grid;
 
+    /* Chia làm 12 cột bằng nhau */
     grid-template-columns:
         repeat(12, minmax(0, 1fr));
 
+    /* Chiều cao các hàng tự động điều chỉnh */
     grid-auto-rows: auto;
 
+    /* Khoảng cách giữa các ô là 1rem */
     gap: 1rem;
 
+    /* Độ rộng khớp với Header */
     width:
         min(
             calc(100% - 3rem),
             1180px
         );
 
+    /* Căn giữa và khoảng cách lề dưới là 3rem */
     margin:
         0 auto 3rem;
 }
 
 
 /* =========================================================
-   BENTO CARDS
+   BENTO CARDS (Thẻ Bento trong lưới)
 ========================================================= */
 
 section {
+    /* Làm mốc tọa độ cho phần tử con tuyệt đối (::before) */
     position: relative;
 
+    /* Cắt bỏ phần nội dung tràn ra khỏi góc bo */
     overflow: hidden;
 
+    /* Khoảng đệm bên trong thẻ */
     padding: 1.5rem;
 
+    /* Nền chuyển màu chéo 145 độ từ --surface sang --surface-2 */
     background:
         linear-gradient(
             145deg,
@@ -272,42 +334,52 @@ section {
             var(--surface-2)
         );
 
+    /* Khung viền 1px */
     border:
         1px solid var(--border);
 
+    /* Bo tròn góc theo biến */
     border-radius:
         var(--radius-lg);
 
+    /* Đổ bóng */
     box-shadow:
         var(--shadow);
 
+    /* Chuyển động mượt khi hover */
     transition:
         var(--transition);
 }
 
 section:hover {
+    /* Đổi màu viền khi rê chuột vào */
     border-color:
         var(--border-hover);
 
+    /* Đổ bóng đậm hơn */
     box-shadow:
         var(--shadow-hover);
 
+    /* Nhích thẻ lên 2px */
     transform:
         translateY(-2px);
 }
 
 
-/* Accent glow */
+/* Accent glow (Vùng sáng mờ trang trí góc trên bên phải thẻ) */
 
 section::before {
+    /* Định vị tuyệt đối ở góc trên bên phải */
     position: absolute;
 
     top: -100px;
     right: -100px;
 
+    /* Kích thước vùng sáng */
     width: 180px;
     height: 180px;
 
+    /* Tạo hiệu ứng quầng sáng hình tròn màu tím mờ */
     background:
         radial-gradient(
             circle,
@@ -315,74 +387,84 @@ section::before {
             transparent 70%
         );
 
+    /* Nội dung rỗng để hiển thị pseudo-element */
     content: "";
 
+    /* Không cản trở tương tác chuột vào nội dung bên dưới */
     pointer-events: none;
 }
 
 
 /* =========================================================
-   BENTO LAYOUT
+   BENTO LAYOUT (Phân chia ô cho các Section trong Bento)
 ========================================================= */
 
-/* Add Task */
-
+/* Section: Thêm công việc */
 .add-task-section {
+    /* Chiếm 7 trên 12 cột */
     grid-column:
         span 7;
 
+    /* Chiếm 2 hàng */
     grid-row:
         span 2;
 }
 
 
-/* Search */
-
+/* Section: Tìm kiếm & Lọc */
 .search-filter-section {
+    /* Chiếm 5 trên 12 cột còn lại */
     grid-column:
         span 5;
 
+    /* Chiếm 1 hàng */
     grid-row:
         span 1;
 }
 
 
-/* Statistics */
-
+/* Section: Thống kê */
 .statistics-section {
+    /* Chiếm 5 trên 12 cột */
     grid-column:
         span 5;
 
+    /* Chiếm 1 hàng */
     grid-row:
         span 1;
 }
 
 
-/* Task List */
-
+/* Section: Danh sách công việc */
 .task-list-section {
+    /* Chiếm toàn bộ các cột từ đầu đến cuối (Full width) */
     grid-column:
         1 / -1;
 }
 
 
 /* =========================================================
-   ADD TASK
+   ADD TASK (Form thêm công việc)
 ========================================================= */
 
 .task-form {
+    /* Sử dụng Grid cho form */
     display: grid;
 
+    /* Chia làm 2 cột bằng nhau */
     grid-template-columns:
         repeat(2, minmax(0, 1fr));
 
+    /* Khoảng cách giữa các ô nhập liệu */
     gap: 1rem;
 }
 
 .task-form .field {
+    /* Cho phép co nhỏ phần tử dưới kích thước nội dung nếu cần */
     min-width: 0;
 }
 
+/* Các phần tử này sẽ kéo dài chiếm trọn 2 cột */
 .task-form .task-name-field,
 .task-form .form-actions,
 .task-form .form-message {
@@ -391,13 +473,14 @@ section::before {
 }
 
 .task-form label {
+    /* Khoảng cách lề của label trong form */
     margin:
         0 0 0.4rem;
 }
 
 
 /* =========================================================
-   FORM
+   FORM (Cấu hình chung cho Form)
 ========================================================= */
 
 .field {
@@ -405,187 +488,234 @@ section::before {
 }
 
 label {
+    /* Hiển thị dạng khối để nằm trên dòng riêng */
     display: block;
 
+    /* Căn khoảng cách lề */
     margin:
         0.8rem 0 0.4rem;
 
+    /* Màu chữ */
     color: var(--text);
 
+    /* Cỡ chữ */
     font-size: 0.85rem;
 
+    /* Độ dậy của chữ (In đậm) */
     font-weight: 700;
 }
 
 .optional {
+    /* Màu chữ nhạt cho nhãn "(optional)" */
     color: var(--muted);
 
+    /* Cỡ chữ nhỏ hơn */
     font-size: 0.78rem;
 
+    /* Chữ thường (không đậm) */
     font-weight: 400;
 }
 
 
 /* =========================================================
-   INPUT / SELECT
+   INPUT / SELECT (Thẻ nhập liệu & Thẻ chọn)
 ========================================================= */
 
 input,
 select,
 button {
+    /* Chiều cao tối thiểu cho ô nhập liệu và nút */
     min-height: 2.8rem;
 
+    /* Khung viền */
     border:
         1px solid var(--border);
 
+    /* Bo tròn góc nhỏ */
     border-radius:
         var(--radius-sm);
 
+    /* Thừa hưởng phông chữ từ body */
     font: inherit;
 }
 
 input,
 select {
+    /* Chiều rộng 100% thẻ chứa */
     width: 100%;
 
+    /* Khoảng đệm đệm chữ bên trong */
     padding:
         0.65rem 0.8rem;
 
+    /* Màu nền ô nhập liệu */
     background:
         var(--input-bg);
 
+    /* Màu chữ khi gõ */
     color:
         var(--text);
 
+    /* Xóa đường viền mặc định của trình duyệt khi click vào */
     outline: none;
 
+    /* Chuyển đổi hiệu ứng mượt */
     transition:
         var(--transition);
 }
 
 input:hover,
 select:hover {
+    /* Đổi màu viền khi rê chuột */
     border-color:
         var(--border-hover);
 }
 
 input:focus,
 select:focus {
+    /* Đổi màu viền sang màu chủ đạo khi nhấp vào nhập liệu */
     border-color:
         var(--accent);
 
+    /* Thêm vòng quầng sáng xung quanh để báo hiệu đang active */
     box-shadow:
         0 0 0 3px
         rgb(139 92 246 / 15%);
 }
 
 input::placeholder {
+    /* Màu của đoạn văn bản gợi ý trong input */
     color:
         var(--muted);
 }
 
 
 /* =========================================================
-   BUTTON
+   BUTTON (Nút bấm)
 ========================================================= */
 
 button {
+    /* Khoảng đệm trong nút */
     padding:
         0.6rem 1rem;
 
+    /* Đổi con trỏ chuột thành hình bàn tay */
     cursor: pointer;
 
+    /* Màu nền mặc định là màu chủ đạo */
     background:
         var(--accent);
 
+    /* Màu chữ màu trắng */
     color:
         white;
 
+    /* In đậm chữ */
     font-weight:
         700;
 
+    /* Chuyển động mượt */
     transition:
         var(--transition);
 }
 
 button:hover {
+    /* Màu nền sáng/đậm hơn khi hover */
     background:
         var(--accent-hover);
 
+    /* Nhích nút lên 2px */
     transform:
         translateY(-2px);
 }
 
 button:active {
+    /* Khi bấm giữ nút thì trả về vị trí cũ */
     transform:
         translateY(0);
 }
 
 button:disabled {
+    /* Con trỏ chuột dạng cấm khi nút bị vô hiệu hóa */
     cursor: not-allowed;
 
+    /* Làm mờ nút đi 50% */
     opacity: 0.5;
 
+    /* Bỏ qua các sự kiện click chuột */
     pointer-events: none;
 }
 
 button:focus-visible,
 input:focus-visible,
 select:focus-visible {
+    /* Đường viền focus chuẩn truy cập cho người dùng dùng phím Tab */
     outline:
         3px solid var(--focus);
 
+    /* Khoảng cách từ đường viền đến phần tử */
     outline-offset:
         2px;
 }
 
 
 /* =========================================================
-   FORM ACTIONS
+   FORM ACTIONS (Nút chứa các hành động form)
 ========================================================= */
 
 .form-actions {
+    /* Bố cục dạng Flexbox xếp ngang */
     display: flex;
 
+    /* Khoảng cách giữa các nút */
     gap: 0.75rem;
 
+    /* Khoảng cách phía trên */
     margin-top: 0.25rem;
 }
 
 .form-actions button {
+    /* Các nút chia đều chiều rộng bằng nhau */
     flex: 1;
 }
 
 .button-secondary {
+    /* Nút phụ có nền trong suốt */
     background:
         transparent;
 
+    /* Màu chữ chuẩn */
     color:
         var(--text);
 }
 
 .button-secondary:hover {
+    /* Nền đổi màu xám nhẹ khi hover */
     background:
         var(--surface-hover);
 }
 
 
 /* =========================================================
-   SEARCH & FILTER
+   SEARCH & FILTER (Phần tìm kiếm và lọc)
 ========================================================= */
 
 .search-filter-section {
     display: grid;
 
+    /* Chia 2 cột bằng nhau */
     grid-template-columns:
         1fr 1fr;
 
+    /* Khoảng cách hàng 0.75rem, cột 1rem */
     gap: 0.75rem 1rem;
 
+    /* Dồn các nội dung lên trên cùng */
     align-content: start;
 }
 
 .search-filter-section h2 {
+    /* Tiêu đề chiếm trọn dòng */
     grid-column:
         1 / -1;
 
@@ -600,12 +730,13 @@ select:focus-visible {
 
 .search-filter-section input,
 .search-filter-section select {
+    /* Đẩy ô nhập lên trên một chút để sát label */
     margin-top:
         -0.35rem;
 }
 
 
-/* Search input takes full width */
+/* Ô tìm kiếm chiếm trọn 2 cột */
 
 #search {
     grid-column:
@@ -614,13 +745,15 @@ select:focus-visible {
 
 
 /* =========================================================
-   TASK LIST HEADER
+   TASK LIST HEADER (Đầu danh sách công việc)
 ========================================================= */
 
 .section-heading {
     display: flex;
 
+    /* Căn giữa theo chiều dọc */
     align-items: center;
+    /* Dồn 2 đầu phần tử (Tiêu đề sang trái, nút sang phải) */
     justify-content: space-between;
 
     gap: 1rem;
@@ -642,6 +775,7 @@ select:focus-visible {
 }
 
 .section-actions .button-secondary {
+    /* Giảm chiều cao của nút Clear Completed trong header */
     min-height:
         2.2rem;
 
@@ -653,6 +787,7 @@ select:focus-visible {
 }
 
 .result-count {
+    /* Nhãn đếm số lượng kết quả */
     padding:
         0.3rem 0.65rem;
 
@@ -662,6 +797,7 @@ select:focus-visible {
     background:
         var(--accent-soft);
 
+    /* Bo tròn dạng viên thuốc */
     border-radius:
         999px;
 
@@ -674,16 +810,18 @@ select:focus-visible {
 
 
 /* =========================================================
-   TASK LIST
+   TASK LIST (Danh sách thẻ công việc)
 ========================================================= */
 
 ul {
+    /* Chiều cao tối thiểu của danh sách */
     min-height:
         7rem;
 
     padding: 0;
     margin: 0;
 
+    /* Xóa dấu chấm đầu dòng mặc định của danh sách ul */
     list-style:
         none;
 }
@@ -692,6 +830,7 @@ li {
     min-height:
         2.5rem;
 
+    /* Khoảng cách giữa các task */
     margin-bottom:
         0.6rem;
 }
@@ -699,7 +838,9 @@ li {
 .task-item {
     display: flex;
 
+    /* Căn giữa chiều dọc */
     align-items: center;
+    /* Đẩy phần thông tin sang trái, nút bấm sang phải */
     justify-content: space-between;
 
     gap: 1rem;
@@ -707,6 +848,7 @@ li {
     padding:
         0.9rem 1rem;
 
+    /* Màu nền của một dòng task */
     background:
         var(--surface-hover);
 
@@ -721,18 +863,22 @@ li {
 }
 
 .task-item:hover {
+    /* Đổi viền sang tím khi hover vào task */
     border-color:
         var(--accent);
 
+    /* Đẩy nhẹ task sang phải 3px */
     transform:
         translateX(3px);
 
+    /* Đổ bóng nhẹ */
     box-shadow:
         0 5px 20px
         rgb(0 0 0 / 15%);
 }
 
 .task-main {
+    /* Cho phép thu nhỏ phần chữ nếu bị dài quá */
     min-width:
         0;
 }
@@ -752,6 +898,7 @@ li {
 }
 
 .task-completion input {
+    /* Kích thước của ô checkbox hoàn thành */
     width:
         1.15rem;
 
@@ -763,6 +910,7 @@ li {
 
     margin: 0;
 
+    /* Màu sắc của ô tick khi chọn */
     accent-color:
         var(--accent);
 
@@ -771,6 +919,7 @@ li {
 }
 
 .task-title {
+    /* Ngắt từ thông minh nếu tiêu đề quá dài */
     overflow-wrap:
         anywhere;
 
@@ -779,6 +928,7 @@ li {
 }
 
 .is-completed .task-title {
+    /* Đổi màu mờ và gạch ngang chữ khi công việc đã hoàn thành */
     color:
         var(--muted);
 
@@ -788,35 +938,40 @@ li {
 
 
 /* =========================================================
-   EXPIRED TASK
+   EXPIRED TASK (Công việc đã quá hạn)
 ========================================================= */
 
 .task-item.is-expired {
+    /* Nền màu đỏ thẫm mờ */
     background:
         rgb(127 29 29 / 15%);
 
+    /* Viền đỏ */
     border-color:
         #7f1d1d;
 }
 
 .is-expired .task-title {
+    /* Màu chữ hồng đỏ báo động */
     color:
         #fecaca;
 }
 
 
 /* =========================================================
-   TASK METADATA
+   TASK METADATA (Thông tin phụ: độ ưu tiên, ngày hết hạn)
 ========================================================= */
 
 .task-metadata {
     display: flex;
 
+    /* Tự xuống dòng nếu thiếu chỗ */
     flex-wrap: wrap;
 
     gap:
         0.45rem;
 
+    /* Lề khoảng cách so với checkbox */
     margin:
         0.5rem 0 0 1.9rem;
 }
@@ -837,6 +992,7 @@ li {
         700;
 }
 
+/* Đỏ - Ưu tiên cao */
 .priority-high {
     color:
         #fecaca;
@@ -845,6 +1001,7 @@ li {
         #4a1717;
 }
 
+/* Vàng - Ưu tiên trung bình */
 .priority-medium {
     color:
         #fde68a;
@@ -853,6 +1010,7 @@ li {
         #49380d;
 }
 
+/* Xanh lá - Ưu tiên thấp */
 .priority-low {
     color:
         #bbf7d0;
@@ -861,6 +1019,7 @@ li {
         #123b26;
 }
 
+/* Thẻ ngày hạn chót */
 .due-date {
     color:
         var(--muted);
@@ -869,6 +1028,7 @@ li {
         var(--input-bg);
 }
 
+/* Thẻ báo đã quá hạn */
 .due-date-expired,
 .expiration-status {
     color:
@@ -880,12 +1040,13 @@ li {
 
 
 /* =========================================================
-   TASK ACTIONS
+   TASK ACTIONS (Các nút thao tác trên Task: Sửa, Xóa)
 ========================================================= */
 
 .task-actions {
     display: flex;
 
+    /* Không cho phép co nhỏ nhóm nút này */
     flex: 0 0 auto;
 
     gap:
@@ -910,18 +1071,20 @@ li {
 }
 
 .task-actions button:hover {
+    /* Đổi nền khi di chuột vào nút Sửa */
     background:
         var(--accent-soft);
 }
 
 .task-actions .delete-button:hover {
+    /* Đổi nền màu đỏ khi di chuột vào nút Xóa */
     background:
         #4a1717;
 }
 
 
 /* =========================================================
-   EMPTY STATE
+   EMPTY STATE (Trạng thái danh sách rỗng)
 ========================================================= */
 
 .empty-state {
@@ -930,6 +1093,7 @@ li {
     min-height:
         9rem;
 
+    /* Căn chữ ra chính giữa chiều dọc lẫn ngang */
     place-items:
         center;
 
@@ -939,6 +1103,7 @@ li {
     color:
         var(--muted);
 
+    /* Viền nét đứt */
     border:
         1px dashed var(--border);
 
@@ -954,7 +1119,7 @@ li {
 
 
 /* =========================================================
-   STATISTICS
+   STATISTICS (Khu vực thống kê)
 ========================================================= */
 
 .statistics-section {
@@ -964,21 +1129,23 @@ li {
     flex-direction:
         column;
     
+    /* Ghi đè lại layout Bento: Giờ đây sẽ chiếm trọn 12 cột */
     grid-column: 1 / -1;
     grid-row: span 1;
-
 }
 
 .statistics-grid {
     display:
         grid;
 
+    /* Chia làm 4 cột đều nhau cho 4 chỉ số thống kê */
     grid-template-columns:
         repeat(4, minmax(0, 1fr));
 
     gap:
         0.75rem;
 
+    /* Đẩy grid xuống đáy thẻ chứa */
     margin-top:
         auto;
 }
@@ -1016,6 +1183,7 @@ li {
 }
 
 .stat-card:hover {
+    /* Nổi thẻ thống kê lên khi di chuột vào */
     border-color:
         var(--accent);
 
@@ -1038,6 +1206,7 @@ li {
     color:
         var(--text);
 
+    /* Cỡ chữ số thống kê to */
     font-size:
         1.8rem;
 
@@ -1047,7 +1216,7 @@ li {
 
 
 /* =========================================================
-   FORM MESSAGE
+   FORM MESSAGE (Dòng thông báo của Form)
 ========================================================= */
 
 .form-message {
@@ -1069,6 +1238,7 @@ li {
         700;
 }
 
+/* Trạng thái thành công (Xanh lá) */
 .form-message--success {
     color:
         #bbf7d0;
@@ -1080,6 +1250,7 @@ li {
         #166534;
 }
 
+/* Trạng thái thất bại / lỗi (Đỏ) */
 .form-message--error {
     color:
         #fecaca;
@@ -1091,6 +1262,7 @@ li {
         #b91c1c;
 }
 
+/* Trạng thái thông tin (Tím) */
 .form-message--info {
     color:
         var(--accent-hover);
@@ -1104,17 +1276,21 @@ li {
 
 
 /* =========================================================
-   NOTIFICATION / TOAST
+   NOTIFICATION / TOAST (Thông báo Toast nổi góc màn hình)
 ========================================================= */
 
 .app-notification {
+    /* Ghim cố định vị trí trên màn hình */
     position: fixed;
 
+    /* Vị trí ở góc dưới bên phải */
     right: 1.5rem;
     bottom: 1.5rem;
 
+    /* Đảm bảo luôn nằm trên cùng các phần tử khác */
     z-index: 100;
 
+    /* Độ rộng của ô thông báo */
     width:
         min(
             24rem,
@@ -1133,6 +1309,7 @@ li {
     border:
         1px solid var(--border);
 
+    /* Dải màu nhấn ở mép trái */
     border-left:
         4px solid var(--accent);
 
@@ -1146,10 +1323,12 @@ li {
     font-weight:
         700;
 
+    /* Chạy hiệu ứng trượt vào */
     animation:
         toast-in 0.25s ease-out;
 }
 
+/* Toast Thành công */
 .app-notification--success {
     color:
         #dcfce7;
@@ -1164,6 +1343,7 @@ li {
         #86efac;
 }
 
+/* Toast Cảnh báo / Lỗi */
 .app-notification--warning,
 .app-notification--error {
     color:
@@ -1179,6 +1359,7 @@ li {
         #f87171;
 }
 
+/* Toast Thông tin */
 .app-notification--info {
     color:
         #ede9fe;
@@ -1193,14 +1374,17 @@ li {
         #c4b5fd;
 }
 
+/* Khai báo animation trượt từ dưới lên cho Toast */
 @keyframes toast-in {
     from {
+        /* Bắt đầu: Trong suốt và lệch xuống dưới 0.8rem */
         opacity: 0;
         transform:
             translateY(0.8rem);
     }
 
     to {
+        /* Kết thúc: Hiện rõ và về đúng vị trí */
         opacity: 1;
         transform:
             translateY(0);
@@ -1209,7 +1393,7 @@ li {
 
 
 /* =========================================================
-   FOOTER
+   FOOTER (Chân trang)
 ========================================================= */
 
 footer {
@@ -1234,6 +1418,7 @@ footer {
     padding:
         1.25rem 1.5rem;
 
+    /* Dải nền gradient nhẹ ngang */
     background:
         linear-gradient(
             90deg,
@@ -1242,10 +1427,12 @@ footer {
             var(--bg)
         );
 
+    /* Viền trên */
     border-top:
         1px solid var(--border);
 }
 
+/* Đường kẻ màu tím làm điểm nhấn ở trên cùng footer */
 footer::before {
     position:
         absolute;
@@ -1268,6 +1455,7 @@ footer::before {
     content:
         "";
 
+    /* Căn giữa đường kẻ */
     transform:
         translateX(-50%);
 }
@@ -1283,6 +1471,7 @@ footer p {
         0.85rem;
 }
 
+/* Tạo dấu chấm phân cách giữa 2 đoạn văn trong footer */
 footer p + p::before {
     display:
         inline-block;
@@ -1299,16 +1488,18 @@ footer p + p::before {
 
 
 /* =========================================================
-   RESPONSIVE - TABLET
+   RESPONSIVE - TABLET (Màn hình nhỏ hơn hoặc bằng 900px)
 ========================================================= */
 
 @media (max-width: 900px) {
 
     main {
+        /* Chuyển lưới main về dạng 2 cột */
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
     }
 
+    /* Đưa các section về chiếm 1 cột */
     .add-task-section,
     .search-filter-section,
     .statistics-section,
@@ -1320,6 +1511,7 @@ footer p + p::before {
             auto;
     }
 
+    /* Riêng danh sách task vẫn mở rộng full 2 cột */
     .task-list-section {
         grid-column:
             1 / -1;
@@ -1328,12 +1520,13 @@ footer p + p::before {
 
 
 /* =========================================================
-   RESPONSIVE - MOBILE
+   RESPONSIVE - MOBILE (Màn hình nhỏ hơn hoặc bằng 620px)
 ========================================================= */
 
 @media (max-width: 620px) {
 
     header {
+        /* Chuyển header về 1 cột duy nhất */
         grid-template-columns:
             1fr;
 
@@ -1350,6 +1543,7 @@ footer p + p::before {
             1.5rem 0;
     }
 
+    /* Xếp các phần tử header nằm chồng lên nhau */
     header h1,
     header p,
     header > button {
@@ -1361,6 +1555,7 @@ footer p + p::before {
     }
 
     header > button {
+        /* Nút đổi theme chiếm full 100% chiều rộng trên điện thoại */
         width:
             100%;
 
@@ -1370,6 +1565,7 @@ footer p + p::before {
 
 
     main {
+        /* Chuyển layout main về 1 cột */
         grid-template-columns:
             1fr;
 
@@ -1393,6 +1589,7 @@ footer p + p::before {
 
 
     section {
+        /* Giảm padding của các ô thẻ cho vừa màn hình nhỏ */
         padding:
             1.1rem;
 
@@ -1402,6 +1599,7 @@ footer p + p::before {
 
 
     .task-form {
+        /* Form chuyển về 1 cột */
         grid-template-columns:
             1fr;
     }
@@ -1415,6 +1613,7 @@ footer p + p::before {
 
 
     .search-filter-section {
+        /* Khu vực lọc chuyển về 1 cột */
         grid-template-columns:
             1fr;
     }
@@ -1427,6 +1626,7 @@ footer p + p::before {
 
 
     .form-actions {
+        /* Các nút bấm xếp theo chiều dọc */
         flex-direction:
             column;
     }
@@ -1438,6 +1638,7 @@ footer p + p::before {
 
 
     .section-heading {
+        /* Căn lề lùi sang trái và xếp dọc tiêu đề + nút */
         align-items:
             flex-start;
 
@@ -1455,6 +1656,7 @@ footer p + p::before {
 
 
     .task-item {
+        /* Kéo giãn và xếp dọc thẻ task trên mobile */
         align-items:
             stretch;
 
@@ -1466,17 +1668,20 @@ footer p + p::before {
     }
 
     .task-actions {
+        /* Thẳng hàng với tiêu đề phía trên */
         margin-left:
             1.9rem;
     }
 
     .task-actions button {
+        /* Các nút Sửa / Xóa chia đều chiều rộng */
         flex:
             1;
     }
 
 
     footer {
+        /* Chân trang xếp dọc các dòng chữ */
         flex-direction:
             column;
 
@@ -1487,6 +1692,7 @@ footer p + p::before {
             center;
     }
 
+    /* Ẩn dấu chấm phân cách trên mobile */
     footer p + p::before {
         display:
             none;
@@ -1494,6 +1700,7 @@ footer p + p::before {
 
 
     .app-notification {
+        /* Mở rộng Toast gần tràn viền dưới màn hình */
         right:
             1rem;
 
